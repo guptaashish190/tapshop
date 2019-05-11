@@ -56,6 +56,7 @@
                     app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/username_textinput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
@@ -73,6 +74,7 @@
                     app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password_textinput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
@@ -104,30 +106,23 @@
                     android:textColor="@color/primary"
                     app:rippleColor="@color/primary_light"
                     app:cornerRadius="10dp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+            <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="5dp"
+                    android:outlineSpotShadowColor="#aaa"
+                    app:cardElevation="4dp"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    app:srcCompat="@mipmap/ic_facebook_t"
-                    tools:layout_editor_absoluteY="502dp"
-                    tools:layout_editor_absoluteX="117dp"
-                    android:id="@+id/fb_icon"
-                    android:layout_marginEnd="5dp"/>
+                        android:elevation="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/googlelogin"
+                        android:id="@+id/imageView5"/>
+            </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    app:srcCompat="@mipmap/ic_google_t"
-                    tools:layout_editor_absoluteY="502dp"
-                    tools:layout_editor_absoluteX="117dp"
-                    android:id="@+id/google_icon"
-                    android:layout_marginStart="5dp"/>
-
-            </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>

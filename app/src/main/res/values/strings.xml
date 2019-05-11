@@ -5,4 +5,6 @@
     <string name="password_text">Password</string>
     <string name="login_text">Login</string>
     <string name="forgot_pass_text">Forgot Password</string>
+    <string name="fb_login_desc">facebook login button</string>
+    <string name="g_login_desc">google login button</string>
 </resources>
