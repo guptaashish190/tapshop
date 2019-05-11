@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "606156716264",
+    "firebase_url": "https://tapshop-971ef.firebaseio.com",
+    "project_id": "tapshop-971ef",
+    "storage_bucket": "tapshop-971ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606156716264:android:6726265dd03a74ae",
+        "android_client_info": {
+          "package_name": "com.tapshop.tapshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606156716264-4bgfrmgn61ggiihr91j8enc26j0msp5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAevDLXUS93V2D1XwRUy5kaME6Gn_Fw6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606156716264-4bgfrmgn61ggiihr91j8enc26j0msp5b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
