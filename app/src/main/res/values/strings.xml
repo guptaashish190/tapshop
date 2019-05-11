@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">TapShop</string>
     <string name="tapshop_title">TapShop</string>
+    <string name="username_text">Username</string>
+    <string name="password_text">Password</string>
+    <string name="login_text">Login</string>
+    <string name="forgot_pass_text">Forgot Password</string>
 </resources>

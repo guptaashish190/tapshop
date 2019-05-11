@@ -1,13 +1,12 @@
 package com.tapshop.tapshop
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
     }
-    internal val mRunnable: Runnable = Runnable {
+    private val mRunnable: Runnable = Runnable {
 
         val intent = Intent(applicationContext, LoginActivity::class.java)
         startActivity(intent)
