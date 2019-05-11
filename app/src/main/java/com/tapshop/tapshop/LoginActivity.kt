@@ -1,5 +1,6 @@
 package com.tapshop.tapshop
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -18,5 +19,9 @@ class LoginActivity : AppCompatActivity() {
         username = username_textinput.toString()
         password = password_textinput.toString()
 
+        new_user_button.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

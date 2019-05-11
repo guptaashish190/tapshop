@@ -9,4 +9,6 @@
     <string name="g_login_desc">google login button</string>
     <string name="login_screen_title">login screen title</string>
     <string name="new_user">New User</string>
+    <string name="g_signin_desc">google sign in button</string>
+    <string name="register_text">Register</string>
 </resources>
