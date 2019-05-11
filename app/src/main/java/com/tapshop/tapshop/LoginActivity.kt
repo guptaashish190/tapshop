@@ -19,5 +19,4 @@ class LoginActivity : AppCompatActivity() {
         password = password_textinput.toString()
 
     }
-
 }

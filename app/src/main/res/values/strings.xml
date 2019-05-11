@@ -7,4 +7,6 @@
     <string name="forgot_pass_text">Forgot Password</string>
     <string name="fb_login_desc">facebook login button</string>
     <string name="g_login_desc">google login button</string>
+    <string name="login_screen_title">login screen title</string>
+    <string name="new_user">New User</string>
 </resources>

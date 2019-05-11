@@ -6,14 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity">
-    <TextView
-            android:text="@string/tapshop_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <ImageView
+            android:contentDescription="@string/login_screen_title"
+            app:srcCompat="@drawable/title"
+            android:layout_width="220dp"
+            android:layout_height="91dp"
             android:id="@+id/title"
-            android:textStyle="bold"
-            android:textSize="50sp"
-            android:textColor="@color/secondary"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp"
@@ -80,6 +78,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.button.MaterialButton
+                    android:id="@+id/login_button"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="30dp"
                     android:padding="20dp"
@@ -95,17 +94,7 @@
                     android:textStyle="bold"
                     app:rippleColor="@color/primary"
                     android:textColor="@color/primary_dark"/>
-            <com.google.android.material.button.MaterialButton
-                    android:padding="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/forgot_pass_text"
-                    android:textAllCaps="false"
-                    android:backgroundTint="#fff"
-                    android:textSize="13sp"
-                    android:textColor="@color/primary"
-                    app:rippleColor="@color/primary_light"
-                    app:cornerRadius="10dp"/>
+
             <androidx.cardview.widget.CardView
                     app:cardCornerRadius="5dp"
                     android:outlineSpotShadowColor="#aaa"
@@ -120,9 +109,37 @@
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         app:srcCompat="@drawable/googlelogin"
-                        android:id="@+id/imageView5"/>
+                        android:id="@+id/google_signin_button"/>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/forgot_pass_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_pass_text"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/grey"
+            app:rippleColor="@color/light_grey"
+            app:layout_constraintStart_toStartOf="@id/login_card"
+            app:layout_constraintTop_toBottomOf="@id/login_card"
+    />
+    <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/new_user_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rippleColor="@color/light_grey"
+            android:text="@string/new_user"
+            android:layout_marginEnd="20dp"
+            android:textSize="12sp"
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/login_card"
+            app:layout_constraintRight_toRightOf="@id/login_card"
+    />
   </androidx.constraintlayout.widget.ConstraintLayout>
