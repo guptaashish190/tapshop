@@ -8,12 +8,15 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
+import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import com.tapshop.tapshop.R
 import com.tapshop.tapshop.user.ProfileActivity
 import kotlinx.android.synthetic.main.activity_select_profile_photo.*
 import java.io.File
+import java.util.*
 
 class SelectProfilePhotoActivity : AppCompatActivity() {
 
@@ -58,7 +61,18 @@ class SelectProfilePhotoActivity : AppCompatActivity() {
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
             val bitmapDrawable = BitmapDrawable(bitmap)
             pp_image_view.setImageURI(selectedImageUri)
+            uploadPPToFirebase(selectedImageUri)
         }
     }
+
+    private fun uploadPPToFirebase(uri: Uri?){
+        if(uri == null) return
+        val uid = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/images/$uid")
+        ref.putFile(uri).addOnSuccessListener {
+            Log.d("SelectPPActivity", "Successfully uploaded photo")
+        }
+    }
+
 }
 
