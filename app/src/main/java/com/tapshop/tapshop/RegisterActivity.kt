@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -14,29 +13,34 @@ import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var username: String
+    private lateinit var email: String
+    private lateinit var password: String
+    private lateinit var repassword: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
         register_button.setOnClickListener {
-            val username: String = username_textinput.text.toString()
-            val pass:String = password_textinput.text.toString()
-            val repass: String = re_password_textinput.text.toString()
-            val email: String = email_textinput.text.toString()
-            if(validateUserInput(username, pass, repass, email)){
+            username = username_textinput.text.toString()
+            password = password_textinput.text.toString()
+            repassword = re_password_textinput.text.toString()
+            email = email_textinput.text.toString()
+            if(validateUserInput()){
                 val auth = FirebaseAuth.getInstance()
-                auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(this){
-                    if(it.isSuccessful){
-                        Log.d("Register", "Registered")
-                        Toast.makeText(baseContext, "Registered User",
-                            Toast.LENGTH_SHORT).show()
-                        finish()
-                    }else{
-                        // Cancel Display error{
-                        Log.d("Register", "createUserWithEmail:failure")
+                    auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
+                        if(it.isSuccessful){
+                            Log.d("Register", "Registered")
+                            Toast.makeText(baseContext, "Registered User",
+                                Toast.LENGTH_SHORT).show()
+                            finish()
+                        }else{
+                            // Cancel Display error{
+                            Log.d("Register", "createUserWithEmail:failure")
+                        }
                     }
-                }
             }else{
                 println("Nopeee")
             }
@@ -49,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    private fun setTextChangeListener(editText: TextInputEditText, textInputLayout: TextInputLayout): Unit{
+    private fun setTextChangeListener(editText: TextInputEditText, textInputLayout: TextInputLayout){
         editText.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
 
@@ -65,7 +69,7 @@ class RegisterActivity : AppCompatActivity() {
         })
     }
 
-    private fun validateUserInput( username: String,  password: String, repassword: String, email: String): Boolean{
+    private fun validateUserInput(): Boolean{
         var valid = true
 
         username_layout.error = null

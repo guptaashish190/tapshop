@@ -10,5 +10,8 @@
     <string name="login_screen_title">login screen title</string>
     <string name="new_user">New User</string>
     <string name="g_signin_desc">google sign in button</string>
+    <string name="email_text">Email</string>
     <string name="register_text">Register</string>
+    <string name="retype_the_password">Retype the password</string>
+    <string name="web_client_id">606156716264-4bgfrmgn61ggiihr91j8enc26j0msp5b.apps.googleusercontent.com</string>
 </resources>

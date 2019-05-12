@@ -70,10 +70,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Email"
+                    android:hint="@string/email_text"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    app:startIconDrawable="@drawable/ic_lock_black_24dp"
+                    app:startIconDrawable="@drawable/ic_email_black_24dp"
                     app:startIconTint="@color/primary"
                     app:endIconMode="clear_text">
 
@@ -108,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Retype the password"
+                    android:hint="@string/retype_the_password"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
                     app:startIconDrawable="@drawable/ic_lock_black_24dp"
