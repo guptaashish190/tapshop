@@ -14,4 +14,8 @@
     <string name="register_text">Register</string>
     <string name="retype_the_password">Retype the password</string>
     <string name="web_client_id">606156716264-4bgfrmgn61ggiihr91j8enc26j0msp5b.apps.googleusercontent.com</string>
+    <string name="skip">Skip</string>
+    <string name="select_profile_picture">Select Profile Picture</string>
+    <string name="select_from_gallery">Select From Gallery</string>
+    <string name="take_photo">Take Photo</string>
 </resources>

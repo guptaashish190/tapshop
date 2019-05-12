@@ -1,15 +1,17 @@
-package com.tapshop.tapshop
+package com.tapshop.tapshop.register
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
+import com.tapshop.tapshop.R
+import com.tapshop.tapshop.R.anim.slide_in_right
+import com.tapshop.tapshop.R.anim.slide_out_left
+
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -17,7 +19,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var email: String
     private lateinit var password: String
     private lateinit var repassword: String
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +29,22 @@ class RegisterActivity : AppCompatActivity() {
             password = password_textinput.text.toString()
             repassword = re_password_textinput.text.toString()
             email = email_textinput.text.toString()
-            if(validateUserInput()){
-                val auth = FirebaseAuth.getInstance()
-                    auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
-                        if(it.isSuccessful){
-                            Log.d("Register", "Registered")
-                            Toast.makeText(baseContext, "Registered User",
-                                Toast.LENGTH_SHORT).show()
-                            finish()
-                        }else{
-                            // Cancel Display error{
-                            Log.d("Register", "createUserWithEmail:failure")
-                        }
-                    }
-            }else{
-                println("Nopeee")
-            }
+//            if(validateUserInput()){
+//                val auth = FirebaseAuth.getInstance()
+//
+//                auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
+//
+//                    if(it.isSuccessful){
+//                        Log.d("Register", "Registered")
+//                        Toast.makeText(baseContext, "Registered User",
+//                            Toast.LENGTH_SHORT).show()
+//                        goToProfilePictureSelectActivity()
+//                    }else{
+//                        Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
+            goToProfilePictureSelectActivity()
         }
 
         setTextChangeListener(username_textinput, username_layout)
@@ -53,15 +54,18 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
+    private fun goToProfilePictureSelectActivity(){
+        val selectPPIntent = Intent(this, SelectProfilePhotoActivity::class.java)
+        startActivity(selectPPIntent)
+        overridePendingTransition(slide_in_right, slide_out_left)
+        finish()
+    }
+
     private fun setTextChangeListener(editText: TextInputEditText, textInputLayout: TextInputLayout){
         editText.addTextChangedListener(object: TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
+            override fun afterTextChanged(s: Editable?) = Unit
 
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 textInputLayout.error = null

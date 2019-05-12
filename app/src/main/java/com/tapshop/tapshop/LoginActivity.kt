@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.tapshop.tapshop.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var username: String
     private lateinit var password: String
-    private val RC_SIGN_IN = 7
+    private val RC_SIGN_IN = 0
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth
 
@@ -47,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(baseContext, "Signed In",
                             Toast.LENGTH_SHORT).show()
                     }else{
+
                         Log.w("Login", "signInWithEmail:failure", it.exception)
                         Toast.makeText(baseContext, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()
