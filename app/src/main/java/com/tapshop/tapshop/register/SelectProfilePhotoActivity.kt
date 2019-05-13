@@ -27,6 +27,8 @@ class SelectProfilePhotoActivity : AppCompatActivity() {
         const val REQUEST_TAKE_PHOTO = 0
         const val REQUEST_SELECT_IMAGE_IN_ALBUM = 1
     }
+
+    private lateinit var imageUri: Uri
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_profile_photo)
@@ -41,6 +43,11 @@ class SelectProfilePhotoActivity : AppCompatActivity() {
         }
         upload_pp_camera_button.setOnClickListener {
             takePhoto()
+        }
+
+        next_button.setOnClickListener {
+                Toast.makeText(this,"CLicked Enavked", Toast.LENGTH_SHORT).show()
+                uploadPPToFirebaseAndSaveUser(this.imageUri)
         }
     }
     private fun selectImageInAlbum() {
@@ -60,9 +67,9 @@ class SelectProfilePhotoActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         if((requestCode == REQUEST_SELECT_IMAGE_IN_ALBUM || requestCode == REQUEST_TAKE_PHOTO)&& resultCode == Activity.RESULT_OK && data != null){
-            val selectedImageUri = data.data
-            pp_image_view.setImageURI(selectedImageUri)
-            uploadPPToFirebaseAndSaveUser(selectedImageUri)
+            this.imageUri = data.data!!
+            pp_image_view.setImageURI(this.imageUri)
+            next_button.isEnabled = true
         }
     }
 

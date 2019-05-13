@@ -38,25 +38,27 @@ class RegisterActivity : AppCompatActivity() {
             password = password_textinput.text.toString()
             repassword = re_password_textinput.text.toString()
             email = email_textinput.text.toString()
-            if(validateUserInput()){
-                val auth = FirebaseAuth.getInstance()
+/*
+if(validateUserInput()){
+val auth = FirebaseAuth.getInstance()
 
-                auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
+auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
 
-                    if(it.isSuccessful){
-                        // Signed In
-                        Log.d("Register", "Registered")
-                        Toast.makeText(baseContext, "Registered User and Signed in",
-                            Toast.LENGTH_SHORT).show()
+if(it.isSuccessful){
+// Signed In
+Log.d("Register", "Registered")
+Toast.makeText(baseContext, "Registered User and Signed in",
+Toast.LENGTH_SHORT).show()
 
-                        val uid = auth.currentUser?.uid
-                        goToProfilePictureSelectActivity(uid!!)
-                    }else{
-                        Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-//            goToProfilePictureSelectActivity()
+val uid = auth.currentUser?.uid
+goToProfilePictureSelectActivity(uid!!)
+}else{
+Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
+}
+}
+}
+*/
+            goToProfilePictureSelectActivity("")
         }
 
         setTextChangeListener(username_textinput, username_layout)
