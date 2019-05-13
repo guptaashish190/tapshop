@@ -15,11 +15,12 @@
             android:layout_marginTop="40dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
+            android:layout_marginBottom="40dp"
             android:src="@drawable/defaultpic"
             app:civ_border_color="#fff"
             app:civ_border_width="1dp"
             android:elevation="10dp"
-            android:outlineSpotShadowColor="#37000000"/>
+            android:outlineSpotShadowColor="#77000000"/>
     <com.google.android.material.button.MaterialButton
             android:id="@+id/upload_pp_gallery_button"
             android:padding="20dp"
@@ -31,8 +32,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:text="@string/select_from_gallery"
-            android:textColor="@color/primary_dark"
-            android:layout_marginBottom="8dp"/>
+            android:textColor="@color/primary_dark"/>
     <com.google.android.material.button.MaterialButton
             android:id="@+id/upload_pp_camera_button"
             android:backgroundTint="@color/primary_light"
