@@ -48,7 +48,6 @@
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/username_text"
                     android:layout_marginTop="8dp"
@@ -99,6 +98,7 @@
                         android:id="@+id/password_textinput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:text="@string/password_text"
                         android:inputType="textPassword"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -117,11 +117,30 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/re_password_textinput"
+                        android:text="@string/password_text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+            <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/first"
+                    android:orientation="horizontal">
+                <RadioButton
+                        android:layout_marginEnd="20dp"
+                        android:id="@+id/female_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/female"/>
+                <RadioButton
+                        android:layout_marginStart="20dp"
+                        android:id="@+id/male_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/male"/>
+            </RadioGroup>
             <com.google.android.material.button.MaterialButton
                     android:id="@+id/register_button"
                     android:layout_marginTop="20dp"

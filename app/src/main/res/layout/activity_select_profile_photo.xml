@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_height="match_parent"
         android:layout_width="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -15,38 +15,38 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/buttons_layout"
-            app:civ_border_color="@color/secondary"
+            app:civ_border_color="#fff"
             app:civ_border_width="1dp"
             android:elevation="10dp"
-            android:outlineSpotShadowColor="@color/secondary"
-    />
-    <LinearLayout
-            android:id="@+id/buttons_layout"
+            android:outlineSpotShadowColor="#37000000"
+            app:layout_constraintBottom_toTopOf="@+id/upload_pp_gallery_button"/>
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/upload_pp_gallery_button"
+            android:padding="30dp"
+            android:backgroundTint="@color/primary_light"
+            app:rippleColor="@color/primary"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/pp_image_view"
-            app:layout_constraintLeft_toLeftOf="@id/pp_image_view"
-            app:layout_constraintRight_toRightOf="@id/pp_image_view">
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/upload_pp_gallery_button"
-                android:padding="10dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/select_from_gallery"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="40dp"/>
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/upload_pp_camera_button"
-                android:padding="10dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/take_photo"
-                android:layout_marginTop="40dp"/>
-    </LinearLayout>
+            android:text="@string/select_from_gallery"
+            android:textColor="@color/primary_dark"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/upload_pp_camera_button"
+            app:layout_constraintEnd_toEndOf="@+id/pp_image_view"
+            app:layout_constraintStart_toStartOf="@+id/pp_image_view"/>
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/upload_pp_camera_button"
+            android:backgroundTint="@color/primary_light"
+            android:padding="30dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:rippleColor="@color/primary"
+            android:textColor="@color/primary_dark"
+            android:text="@string/take_photo"
+            android:layout_marginBottom="70dp" app:layout_constraintBottom_toTopOf="@+id/skip_button"
+            app:layout_constraintEnd_toEndOf="@+id/upload_pp_gallery_button"
+            app:layout_constraintStart_toStartOf="@+id/upload_pp_gallery_button"/>
     <com.google.android.material.button.MaterialButton
             android:id="@+id/skip_button"
             android:padding="4dp"
@@ -54,8 +54,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/skip"
-            android:layout_marginBottom="100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/pp_image_view"
-            app:layout_constraintRight_toRightOf="@id/pp_image_view"/>
+            android:textColor="@color/grey"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/upload_pp_camera_button"
+            app:layout_constraintStart_toStartOf="@+id/upload_pp_camera_button"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

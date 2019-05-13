@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
 import com.tapshop.tapshop.R
 import com.tapshop.tapshop.R.anim.slide_in_right
@@ -14,6 +17,12 @@ import com.tapshop.tapshop.R.anim.slide_out_left
 
 
 class RegisterActivity : AppCompatActivity() {
+
+    companion object {
+        const val GENDER = "gender_key"
+        const val UID = "user_uid_key"
+        const val USERNAME = "username_key"
+    }
 
     private lateinit var username: String
     private lateinit var email: String
@@ -29,22 +38,25 @@ class RegisterActivity : AppCompatActivity() {
             password = password_textinput.text.toString()
             repassword = re_password_textinput.text.toString()
             email = email_textinput.text.toString()
-//            if(validateUserInput()){
-//                val auth = FirebaseAuth.getInstance()
-//
-//                auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
-//
-//                    if(it.isSuccessful){
-//                        Log.d("Register", "Registered")
-//                        Toast.makeText(baseContext, "Registered User",
-//                            Toast.LENGTH_SHORT).show()
-//                        goToProfilePictureSelectActivity()
-//                    }else{
-//                        Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//            }
-            goToProfilePictureSelectActivity()
+            if(validateUserInput()){
+                val auth = FirebaseAuth.getInstance()
+
+                auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
+
+                    if(it.isSuccessful){
+                        // Signed In
+                        Log.d("Register", "Registered")
+                        Toast.makeText(baseContext, "Registered User and Signed in",
+                            Toast.LENGTH_SHORT).show()
+
+                        val uid = auth.currentUser?.uid
+                        goToProfilePictureSelectActivity(uid!!)
+                    }else{
+                        Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+//            goToProfilePictureSelectActivity()
         }
 
         setTextChangeListener(username_textinput, username_layout)
@@ -54,8 +66,16 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    private fun goToProfilePictureSelectActivity(){
+    private fun goToProfilePictureSelectActivity(uid: String?){
         val selectPPIntent = Intent(this, SelectProfilePhotoActivity::class.java)
+        var gender = "Female"
+        if(male_radio_button.isChecked){
+            gender = "Male"
+        }
+        val username = username_textinput.text.toString()
+        selectPPIntent.putExtra(GENDER , gender)
+        selectPPIntent.putExtra(UID, uid)
+        selectPPIntent.putExtra(USERNAME, username)
         startActivity(selectPPIntent)
         overridePendingTransition(slide_in_right, slide_out_left)
         finish()

@@ -10,9 +10,12 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import com.tapshop.tapshop.R
+import com.tapshop.tapshop.models.UserModel
 import com.tapshop.tapshop.user.ProfileActivity
 import kotlinx.android.synthetic.main.activity_select_profile_photo.*
 import java.io.File
@@ -21,8 +24,8 @@ import java.util.*
 class SelectProfilePhotoActivity : AppCompatActivity() {
 
     companion object {
-        private val REQUEST_TAKE_PHOTO = 0
-        private val REQUEST_SELECT_IMAGE_IN_ALBUM = 1
+        const val REQUEST_TAKE_PHOTO = 0
+        const val REQUEST_SELECT_IMAGE_IN_ALBUM = 1
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,19 +61,36 @@ class SelectProfilePhotoActivity : AppCompatActivity() {
 
         if((requestCode == REQUEST_SELECT_IMAGE_IN_ALBUM || requestCode == REQUEST_TAKE_PHOTO)&& resultCode == Activity.RESULT_OK && data != null){
             val selectedImageUri = data.data
-            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
-            val bitmapDrawable = BitmapDrawable(bitmap)
             pp_image_view.setImageURI(selectedImageUri)
-            uploadPPToFirebase(selectedImageUri)
+            uploadPPToFirebaseAndSaveUser(selectedImageUri)
         }
     }
 
-    private fun uploadPPToFirebase(uri: Uri?){
-        if(uri == null) return
+    private fun uploadPPToFirebaseAndSaveUser(uri: Uri?){
         val uid = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/images/$uid")
-        ref.putFile(uri).addOnSuccessListener {
-            Log.d("SelectPPActivity", "Successfully uploaded photo")
+        ref.putFile(uri!!).addOnSuccessListener {
+            Log.d("SelectPPActivity", "Successfully uploaded photo ${it.metadata?.path}")
+
+            ref.downloadUrl.addOnSuccessListener{url ->
+                Log.d("SelectPPActivity", "Profile Picture Url is : $url")
+                saveUserToDatabase(url.toString())
+            }
+        }
+    }
+
+    private fun saveUserToDatabase(url: String){
+        val database = FirebaseDatabase.getInstance()
+        val uid = intent.getStringExtra(RegisterActivity.UID)
+        val ref = database.getReference("/users/$uid")
+
+        // userinfo
+        val username = intent.getStringExtra(RegisterActivity.USERNAME)
+        val gender = intent.getStringExtra(RegisterActivity.GENDER)
+        val friends = emptyList<String>()
+        val user = UserModel(username,url,gender,friends)
+        ref.setValue(user).addOnSuccessListener {
+            Log.d("SelectPPActivity", "Successfully Saved user to db")
         }
     }
 
