@@ -19,9 +19,9 @@ import com.tapshop.tapshop.R.anim.slide_out_left
 class RegisterActivity : AppCompatActivity() {
 
     companion object {
-        const val GENDER = "gender_key"
-        const val UID = "user_uid_key"
-        const val USERNAME = "username_key"
+        const val GENDER = "gender_RC"
+        const val UID = "user_uid_RC"
+        const val USERNAME = "username_RC"
     }
 
     private lateinit var username: String

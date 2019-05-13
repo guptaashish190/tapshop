@@ -46,7 +46,6 @@ class SelectProfilePhotoActivity : AppCompatActivity() {
         }
 
         next_button.setOnClickListener {
-                Toast.makeText(this,"CLicked Enavked", Toast.LENGTH_SHORT).show()
                 uploadPPToFirebaseAndSaveUser(this.imageUri)
         }
     }
@@ -75,7 +74,7 @@ class SelectProfilePhotoActivity : AppCompatActivity() {
 
     private fun uploadPPToFirebaseAndSaveUser(uri: Uri?){
         val uid = UUID.randomUUID().toString()
-        val ref = FirebaseStorage.getInstance().getReference("/images/$uid")
+        val ref = FirebaseStorage.getInstance().getReference("/profileimages/$uid")
         ref.putFile(uri!!).addOnSuccessListener {
             Log.d("SelectPPActivity", "Successfully uploaded photo ${it.metadata?.path}")
 
@@ -96,6 +95,7 @@ class SelectProfilePhotoActivity : AppCompatActivity() {
         val gender = intent.getStringExtra(RegisterActivity.GENDER)
         val friends = emptyList<String>()
         val user = UserModel(username,url,gender,friends)
+
         ref.setValue(user).addOnSuccessListener {
             Log.d("SelectPPActivity", "Successfully Saved user to db")
         }
